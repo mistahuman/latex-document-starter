@@ -1,0 +1,13 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.bak
+
+# Editor
+*.swp
+.DS_Store

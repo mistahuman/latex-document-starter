@@ -1,0 +1,109 @@
+% Core packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{geometry}
+
+\geometry{a4paper, margin=2.5cm, top=3cm, bottom=2.5cm, headheight=20pt}
+
+% ---------------------------------------------------------------
+% Monochrome palette
+% ---------------------------------------------------------------
+\definecolor{darkgray}{HTML}{1E1E1E}
+\definecolor{midgray}{HTML}{555555}
+\definecolor{lightgray}{HTML}{CCCCCC}
+\definecolor{codebg}{HTML}{F4F4F4}
+\definecolor{codefg}{HTML}{1A1A1A}
+\definecolor{codecomment}{HTML}{777777}
+
+% Sans-serif body font
+\renewcommand{\familydefault}{\sfdefault}
+
+% *** Set your title and author here ***
+\title{Document Title}
+\author{Author Name}
+\date{\today}
+
+\makeatletter
+\let\newtitle\@title
+\let\newauthor\@author
+\let\newdate\@date
+\makeatother
+
+% ---------------------------------------------------------------
+% Section titles: bold, no rule
+% ---------------------------------------------------------------
+\titleformat{\section}
+  {\large\bfseries\sffamily}
+  {\thesection.}{0.6em}{}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\sffamily}
+  {\thesubsection.}{0.6em}{}
+
+% ---------------------------------------------------------------
+% Code — light background, clean monochrome
+% ---------------------------------------------------------------
+\lstdefinestyle{TerminalStyle}{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small\color{codefg},
+    commentstyle=\color{codecomment}\itshape,
+    keywordstyle=\color{codefg}\bfseries,
+    stringstyle=\color{midgray},
+    numberstyle=\tiny\color{codecomment},
+    numbers=left,
+    numbersep=10pt,
+    breaklines=true,
+    showstringspaces=false,
+    frame=single,
+    framesep=6pt,
+    rulecolor=\color{lightgray},
+    tabsize=4,
+    captionpos=b,
+    xleftmargin=12pt,
+    escapeinside={(*@}{@*)},
+    morecomment=[l][\color{codecomment}]{//},
+    morecomment=[s][\color{codecomment}]{/*}{*/}
+}
+
+\lstset{style=TerminalStyle, language=C}
+
+\lstdefinestyle{CStyle}{style=TerminalStyle, language=C}
+\lstdefinestyle{BashStyle}{style=TerminalStyle, language=bash}
+
+% ---------------------------------------------------------------
+% Header: title only — Footer: logo + page number
+% ---------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[C]{\small\textbf{\newtitle}}
+\renewcommand{\headrulewidth}{0.8pt}
+
+\fancyfoot[L]{\includegraphics[height=\ht\strutbox]{template/logos/icon480x480.png}}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\footrulewidth}{0.8pt}
+
+% ---------------------------------------------------------------
+% Cover page — logo, title, rule, author
+% ---------------------------------------------------------------
+\newcommand{\cover}[3]{
+    \begin{titlepage}
+        \null\vfill
+        \centering
+        \includegraphics[width=4cm]{template/logos/icon480x480.png}\\[1.8cm]
+        {\Huge\bfseries #1}\\[1cm]
+        \rule{8cm}{0.8pt}\\[0.8cm]
+        {\large #2}\\[0.3cm]
+        {\small\textcolor{midgray}{#3}}
+        \vfill\null
+    \end{titlepage}
+}
