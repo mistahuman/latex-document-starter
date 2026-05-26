@@ -11,12 +11,14 @@
 \usepackage{titlesec}
 \usepackage{float}
 \usepackage{geometry}
+\usepackage{tgheros}
 
 \geometry{a4paper, margin=2.5cm, top=3cm, bottom=2.5cm, headheight=20pt}
 
 % ---------------------------------------------------------------
-% Monochrome palette
+% Palette
 % ---------------------------------------------------------------
+\definecolor{accent}{HTML}{1E3A5F}
 \definecolor{darkgray}{HTML}{1E1E1E}
 \definecolor{midgray}{HTML}{555555}
 \definecolor{lightgray}{HTML}{CCCCCC}
@@ -24,7 +26,7 @@
 \definecolor{codefg}{HTML}{1A1A1A}
 \definecolor{codecomment}{HTML}{777777}
 
-% Sans-serif body font
+% TeX Gyre Heros (Helvetica clone)
 \renewcommand{\familydefault}{\sfdefault}
 
 % *** Set your title and author here ***
@@ -39,15 +41,15 @@
 \makeatother
 
 % ---------------------------------------------------------------
-% Section titles: bold, no rule
+% Section titles: bold, accent number
 % ---------------------------------------------------------------
 \titleformat{\section}
   {\large\bfseries\sffamily}
-  {\thesection.}{0.6em}{}
+  {\textcolor{accent}{\thesection.}}{0.6em}{}
 
 \titleformat{\subsection}
   {\normalsize\bfseries\sffamily}
-  {\thesubsection.}{0.6em}{}
+  {\textcolor{accent}{\thesubsection.}}{0.6em}{}
 
 % ---------------------------------------------------------------
 % Code — light background, clean monochrome
@@ -86,11 +88,12 @@
 \fancyhf{}
 
 \fancyhead[C]{\small\textbf{\newtitle}}
-\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{{\color{accent}\hrule width\headwidth height\headrulewidth\vskip-\headrulewidth}}
 
 \fancyfoot[L]{\includegraphics[height=\ht\strutbox]{template/logos/icon480x480.png}}
 \fancyfoot[R]{\small\thepage}
-\renewcommand{\footrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 % ---------------------------------------------------------------
 % Cover page — logo, title, rule, author
@@ -100,10 +103,10 @@
         \null\vfill
         \centering
         \includegraphics[width=4cm]{template/logos/icon480x480.png}\\[1.8cm]
-        {\Huge\bfseries #1}\\[1cm]
-        \rule{8cm}{0.8pt}\\[0.8cm]
-        {\large #2}\\[0.3cm]
-        {\small\textcolor{midgray}{#3}}
+        {\Huge\bfseries\sffamily #1}\\[0.8cm]
+        {\color{accent}\rule{8cm}{1.2pt}}\\[0.8cm]
+        {\large\sffamily #2}\\[0.3cm]
+        {\small\sffamily\textcolor{midgray}{#3}}
         \vfill\null
     \end{titlepage}
 }

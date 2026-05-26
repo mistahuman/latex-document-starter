@@ -1,13 +1,17 @@
-LAT = pdflatex -interaction=nonstopmode
+NAME = main
+LAT  = pdflatex -interaction=nonstopmode
+OUT  = out
 
 .PHONY: all clean cleanall
 
 all:
-	$(LAT) main.tex
-	$(LAT) main.tex
+	mkdir -p $(OUT)
+	$(LAT) -output-directory=$(OUT) $(NAME).tex
+	$(LAT) -output-directory=$(OUT) $(NAME).tex
 
 clean:
-	rm -f *.aux *.log *.synctex.gz *.toc *.out *.fls *.fdb_latexmk
+	rm -f $(OUT)/*.aux $(OUT)/*.log $(OUT)/*.synctex.gz $(OUT)/*.toc \
+	      $(OUT)/*.out $(OUT)/*.fls $(OUT)/*.fdb_latexmk
 
 cleanall: clean
-	rm -f main.pdf
+	rm -f $(OUT)/$(NAME).pdf

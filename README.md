@@ -10,8 +10,10 @@ A clean LaTeX template for technical documents. Features a cover page with logo,
 │   ├── template.tex          Preamble, packages, header/footer, cover command
 │   └── logos/
 │       └── icon480x480.png   Logo used in cover and footer
-└── sections/
-    └── example.tex           Example section — replace with your content
+├── sections/
+│   └── example.tex           Example section — replace with your content
+└── out/
+    └── main.pdf              Compiled output
 ```
 
 ## Usage
@@ -34,5 +36,5 @@ make cleanall     # remove auxiliary files and PDF
 
 Edit `template/template.tex` to change:
 - `\title{}` and `\author{}` — document title and author
-- `accentColor` — accent colour used for header/footer rules
+- `accent` — navy accent colour used for section numbers, header and cover rules
 - Code highlighting colours and styles (`CStyle`, `BashStyle`)
